@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{ page_title|default('') }}</title>
+
+    {% block style %}
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/style.css">
+    {% endblock %}
+
+    {% block js_head %}
+        <script src="js/modernizr.js"></script>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <header>
+            <h1>{{ page_title|default('') }}</h1>
+        </header>
+        <section class="cd-faq">
+            {% if messages is defined and messages is not empty %}
+                {% for message in messages %}
+                    <div>{{ message|raw }}</div>
+                {% endfor %}
+            {% endif %}
+            {% block main %}
+
+            {% endblock %}
+        </section>
+    {% endblock %}
+
+    {% block js %}
+        <script src="js/jquery-2.1.1.js"></script>
+        <script src="js/jquery.mobile.custom.min.js"></script>
+        <script src="js/main.js"></script> <!-- Resource jQuery -->
+    {% endblock %}
+</body>
+</html>

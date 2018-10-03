@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+
+    <form method="post" action="{{ url('/ask') }}">
+      <div>  <select name="subject">
+            {% for subject in subjects %}
+                <option value="{{ subject.id }}">
+                    {{ subject.title }}
+                </option>
+            {% endfor %}
+        </select>
+      </div>
+      <div>  
+        <input type="text" name="user" placeholder="Введите имя" required>
+      </div>
+      </div>
+        <input type="email" name="email" placeholder="Введите e-mail" required>
+      </div>
+      <div>
+        <textarea name="text" placeholder="Задайте ваш вопрос" required></textarea>
+      </div>
+      <div>
+        <button type="submit">Отправить</button>
+      </div>
+    </form>
+    <br><br>
+    <div>
+        <a href="{{ url('/') }}">Вернуться на главную</a>
+    </div>
+      
+
+{% endblock %}

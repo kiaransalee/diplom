@@ -1,0 +1,18 @@
+{% extends "pages/admin.html.twig" %}
+
+{% block main %}
+
+   <table class="table">
+        {% for question in questions %}
+            <tr>
+                <td><a href="{{ url('/admin/questions/'~question.id~'') }}">{{ question.text }}</td>
+                
+                <td><a href="{{ url('/admin/questions/'~question.id~'/answer') }}">ответить</a></td>
+               
+                <td><a style="color: red;" href="{{ url('/admin/questions/'~question.id~'/delete') }}">удалить</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

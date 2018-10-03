@@ -1,0 +1,11 @@
+<form action="{{ url(current_uri) }}" method="post">
+    <div>
+        {{ question.text }}
+    </div>
+    <div>
+        <input type="text" name="answer" value="{{ question.answer }}" required>
+    </div>
+
+    <button type="submit" name="public">Опубликовать</button>
+    <button type="submit" name="hide">Скрыть</button>
+</form>

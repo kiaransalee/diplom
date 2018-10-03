@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            {% if subjects is not empty %}
+                {% for subject in subjects %}
+                    <li><a {% if loop.index == 1 %} class="selected"{% endif %}href="#subject-{{ subject.id }}">{{ subject.title }}</a></li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+        <div class="cd-faq-items">
+       <div> <a href="{{ url('/ask') }}">Задать вопрос</a>|<a href="{{ url('/login') }}">Войти как админ</a></div>
+            {% if subjects is not empty %}
+                {% for subject in subjects %}
+                    <ul id="subject-{{ subject.id }}" class="cd-faq-group">
+                        <li class="cd-faq-title"><h2>{{ subject.title }}</h2></li>
+
+                        {% for question in questions[subject.id] %}
+                            <li>
+                                <a class="cd-faq-trigger" href="#0">{{ question.text }}</a>
+                                <div class="cd-faq-content">
+                                    <p>{{ question.answer|raw }}</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}

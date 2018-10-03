@@ -1,0 +1,20 @@
+<form action="{{ url(current_uri) }}" method="post">
+    <select name="subject">
+            {% for subject in subjects %}
+                <option value="{{ subject.id }}">
+                    {{ subject.title }}
+                </option>
+            {% endfor %}
+        </select>
+    <div>
+        <input type="text" name="user" value="{{ question.user }}" required>
+    </div>
+    <div>
+        <input type="text" name="text" value="{{ question.text }}" required>
+    </div>
+    <div>
+        <input type="text" name="answer" value="{{ question.answer }}">
+    </div>
+
+    <button type="submit">Сохранить</button>
+</form>

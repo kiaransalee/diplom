@@ -1,0 +1,21 @@
+{% extends "pages/admin.html.twig" %}
+
+{% block main %}
+
+    <div>
+        <a href="{{ url('/admin/subjects/add') }}" class="btn btn-default">Добавить тему</a>
+    </div>
+
+    <table class="table">
+        {% for subject in subjects %}
+            <tr>
+                <td><a href="{{ url('/admin/subjects/'~subject.id~'')}}">{{ subject.title }}({{ quest_count[subject.id]}})</td>
+                <td>Опубликовано: {{ answ_count[subject.id] }}</td>
+                <td>Ожидают ответа: {{ unansw_count[subject.id] }}</td>
+                <td><a href="{{ url('/admin/subjects/'~subject.id~'/edit') }}">редактировать</a></td>
+                <td><a style="color: red;" href="{{ url('/admin/subjects/'~subject.id~'/delete') }}">удалить</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "pages/admin.html.twig" %}
+
+{% block main %}
+
+   <form method="post" action="{{ url(current_uri) }}">
+      <p>Вы действительно хотите удалить пользователя {{ user.login }}?</p>
+      <button type="submit" name="delete">Да</button>
+      <button type="submit" name="cancel">Отмена</button>
+   </form>
+
+{% endblock %}

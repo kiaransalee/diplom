@@ -1,0 +1,48 @@
+{% extends "pages/admin.html.twig" %}
+
+{% block main %}
+  <h1>Ждут ответа</h1>
+    <table class="table">
+        {% for question in questions %}
+            <tr>
+                <td><a href="{{ url('/admin/questions/'~question.id~'') }}">{{ question.text }}</td>
+                
+                <td><a href="{{ url('/admin/questions/'~question.id~'/answer') }}">ответить</a></td>
+               
+                <td><a style="color: red;" href="{{ url('/admin/questions/'~question.id~'/delete') }}">удалить</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <h1>Все вопросы</h1>
+    <table class="table">
+        {% for question in questions %}
+            <tr>
+                <td><a href="{{ url('/admin/questions/'~question.id~'') }}">{{ question.text }}</td>
+                <td>{{ question.createdAt }}</td>
+                <td>
+                {% if question.status  == 1 %}
+                 Ждет ответа
+                 {% endif %}
+                   {% if question.status  == 2 %}
+                 Опубликован
+                 {% endif %}
+                   {% if question.status  == 3 %}
+                 Вопрос скрыт
+                 {% endif %}
+                 </td>
+                <td><a href="{{ url('/admin/questions/'~question.id~'/edit') }}">редактировать</a></td>
+                <td>
+                   {% if question.status  == 2 %}
+                     <a style="color: #FFD700;" href="{{ url('/admin/questions/'~question.id~'/hide') }}">скрыть</a>
+                   {% endif %}
+                   {% if question.status  == 3 %}
+                     <a style="color: green;" href="{{ url('/admin/questions/'~question.id~'/public') }}">опубликовать</a>
+                   {% endif %}
+                </td>
+                <td><a style="color: red;" href="{{ url('/admin/questions/'~question.id~'/delete') }}">удалить</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

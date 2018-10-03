@@ -1,0 +1,10 @@
+{% extends "pages/admin.html.twig" %}
+
+{% block main %}
+
+    {% include "forms/question.html.twig" with {
+        current_uri: current_uri,
+        question: question,
+    } %}
+
+{% endblock %}

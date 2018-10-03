@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                {% block sidebar %}
+
+                    <div>
+                        {{ current_user.login }} <a href="{{ url('/logout') }}">выйти</a>
+                    </div>
+
+                    <ul>
+                        <li><a href="{{ url('/admin/users') }}">Администраторы</a></li>
+                        <li><a href="{{ url('/admin/subjects') }}">Темы</a></li>
+                        <li><a href="{{ url('/admin/questions') }}">Вопросы</a></li>
+                    </ul>
+                {% endblock %}
+            </div>
+            <div class="col-9">
+                <div>
+                    <h1>{{ page_title }}</h1>
+                </div>
+
+                {% block main %}
+                    Админка. <a href="{{ url('/') }}">Перейти на главную</a>
+
+                    {% if tables is defined and tables is not empty %}
+                        <ul>
+                            {% for table in tables %}
+                                <li>{{ table }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_head %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

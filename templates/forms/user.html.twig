@@ -1,0 +1,12 @@
+<form action="{{ url(current_uri) }}" method="post">
+
+    <div>
+        <input type="text" name="login" value="{{ user.login }}" placeholder="Логин" required>
+    </div>
+
+    <div>
+        <input type="text" name="password"{% if user.id is empty %} placeholder="Пароль" required{% else %} placeholder="Новый пароль"{% endif %}>
+    </div>
+
+    <button type="submit">Сохранить</button>
+</form>
